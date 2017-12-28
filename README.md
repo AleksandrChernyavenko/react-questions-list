@@ -25,21 +25,34 @@ this.setState((prevState, props) => {
 ```
 
 * defaultProps
+* PropTypes
 
 ```
-class CustomButton extends React.Component {
-  // ...
+import PropTypes from 'prop-types';
+
+class Greeting extends React.Component {
+
+  static propTypes = {
+    loading: PropTypes.bool.isRequired,
+  };
+
+  render() {
+    return (
+      <h1>Hello, {this.props.name}</h1>
+    );
+  }
 }
 
-
-CustomButton.defaultProps = {
-  color: 'blue'
+Greeting.propTypes = {
+  name: PropTypes.string
 };
-```
 
+Greeting.defaultProps = {
+  name: 'Stranger'
+};
+````
 
 ## FORMS
-
 
 ```
 class NameForm extends React.Component {
@@ -78,42 +91,6 @@ class NameForm extends React.Component {
 * what do you use for forms ?
 
 
-### PropTypes
-
-```
-import PropTypes from 'prop-types';
-
-class Greeting extends React.Component {
-  render() {
-    return (
-      <h1>Hello, {this.props.name}</h1>
-    );
-  }
-}
-
-Greeting.propTypes = {
-  name: PropTypes.string
-};
-
-Greeting.defaultProps = {
-  name: 'Stranger'
-};
-````
-
-
-```
-  static propTypes = {
-
-    searchQuery: PropTypes.string.isRequired,
-    loading: PropTypes.bool.isRequired,
-    brands: PropTypes.arrayOf(PropTypes.string).isRequired,
-    error: PropTypes.string,
-
-    fetchBrandList: PropTypes.func.isRequired,
-    setSearchQuery: PropTypes.func.isRequired,
-    getCategoryById: PropTypes.func.isRequired,
-  };
-```
 
 ## HTTP(s)
 
